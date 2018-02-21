@@ -1,0 +1,64 @@
+.menu-bar {
+    -fx-background-color: #aeb5ba, linear-gradient(to bottom, #ecf4fa 0%, #ced4d9 100%);
+    -fx-background-insets: 0, 0 0 1 0;
+}
+
+.menu-bar .menu .label {
+    -fx-text-fill: #2d3e4c;
+}
+.menu-bar {
+  -fx-background-color: derive(#FF1d1d,20%); // your color here
+}
+
+.split-pane > .split-pane-divider {
+    -fx-background-color: linear-gradient(to right, #ecf4fa 0%, #ced4d9 100%);
+    -fx-padding: 0 3 0 3;
+}
+
+.scroll-pane {
+    -fx-background-insets: 0, 0;
+    -fx-padding: 0;
+}
+.list-cell:rows{ -fx-background-color: -fx-control-inner-background-alt; }
+/* Selected rows */
+.list-view:focused > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected {
+    -fx-background: gold;
+    -fx-table-cell-border-color: derive(-fx-selection-bar, 20%);
+}
+
+/* Selected when control is not focused */
+.list-cell:filled:selected {
+    -fx-background-color:#dae7f3;
+    -fx-table-cell-border-color: derive(-fx-selection-bar-non-focused, 20%);
+}
+
+.list-cell {
+    -fx-cell-size: 50 ;
+    -fx-animated: true;
+    -fx-padding: 1px;
+}
+
+
+.list-view {
+    -fx-border-image-width: 0;
+}
+
+.text-area {
+    -fx-font-family: Consolas;
+    -fx-font-size: 15;
+    -fx-text-fill: white;
+    -fx-display-caret:true;
+}
+
+.text-area .content {
+    -fx-background-color: #4ee0e8;
+}
+
+.list-cell {
+    -fx-background-color: null;
+}
+
+#chatView{
+    -fx-background-image:url("FXML/chatback.jpg");
+    -fx-background-size: cover;
+}
