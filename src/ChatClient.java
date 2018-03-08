@@ -44,9 +44,14 @@ public class ChatClient extends Application implements Runnable  {
     public static ObservableList<String> chat = FXCollections.observableArrayList();
 
     public static void main(String[] args){
+
+        try {
+            System.out.println( InetAddress.getLocalHost());
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
         launch(args);
     }
-
     @Override
     public void start(Stage primaryStage) throws Exception {
         window = primaryStage;
@@ -106,17 +111,26 @@ public class ChatClient extends Application implements Runnable  {
     static class ChatBox extends ListCell<String>{
         BorderPane border = new BorderPane();
         HBox hbox = new HBox();
+
         Image picture = new Image("FXML/person-male.png");
-        ImageView img = new ImageView(picture);
+        ImageView img ;
 
         TextArea message = new TextArea(" ");
         public ChatBox(String orient){
             super();
+            System.out.println(Name);
 
+            if(Name.contains(("Rick"))) {
+                picture = new Image("FXML/rick.png");
+            }
+                else if( Name.contains("Morty"))
+                    picture = new Image("FXML/morty.png");
+
+            img = new ImageView(picture);
             message.setPrefWidth(200);
             message.setWrapText(true);
-            img.setFitHeight(30);
-            img.setFitWidth(30);
+            img.setFitHeight(50);
+            img.setFitWidth(50);
             hbox.getChildren().addAll(message,img);
             if(state == 0)
                 border.setRight(hbox);
@@ -314,7 +328,7 @@ public class ChatClient extends Application implements Runnable  {
                                 InetAddress.getByName(serverIP),serverPort);
                 message = message.split("TO:")[0];
                 message = message.replaceFirst("3","");
-                        chat.add(message);
+                        chat.add("To:\n"+ message);
                     aSocket.send(reply);
 
             } catch (SocketException e) {
@@ -343,7 +357,7 @@ public class ChatClient extends Application implements Runnable  {
                 String message = new String(request.getData());
                 System.out.println("Receiving");
                 try {
-                    chat.add(message);
+                    chat.add("From:\n" +message);
                 }
                 catch (Exception e){
                     System.out.println("THe mesg " + e);
